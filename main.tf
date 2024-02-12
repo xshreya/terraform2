@@ -30,3 +30,10 @@ resource "aws_s3_bucket" "for-each2" {
   for_each = var.for-each2
   bucket = each.key
 }
+
+
+# Count using for expression
+resource "aws_s3_bucket" "count111" {
+  for_each = { for idx in range(3): idx => "s3-bucket-shreyaa-${idx}" }
+  bucket   = each.value
+}
